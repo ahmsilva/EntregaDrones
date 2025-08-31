@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Entrega por Drones - DTI Digital</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Sistema de Entrega por Drones</h1>
+            <p>Simulador de operação urbana com otimização de rotas</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Painel de Controle -->
+        <section class="control-panel">
+            <h2>Painel de Controle</h2>
+            
+            <!-- Configuração de Drones -->
+            <div class="panel-section">
+                <h3>Configurar Drones</h3>
+                <div class="form-group">
+                    <label for="droneCapacity">Capacidade do Drone (kg):</label>
+                    <input type="number" id="droneCapacity" value="5" min="1" max="20">
+                </div>
+                <div class="form-group">
+                    <label for="droneRange">Alcance do Drone (km):</label>
+                    <input type="number" id="droneRange" value="10" min="1" max="50">
+                </div>
+                <div class="form-group">
+                    <label for="droneCount">Número de Drones:</label>
+                    <input type="number" id="droneCount" value="3" min="1" max="10">
+                </div>
+                <button onclick="droneController.initializeDrones()" class="btn btn-primary">
+                    Inicializar Drones
+                </button>
+            </div>
+
+            <!-- Adicionar Pedido -->
+            <div class="panel-section">
+                <h3>Adicionar Pedido</h3>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="clientX">Coordenada X:</label>
+                        <input type="number" id="clientX" min="0" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientY">Coordenada Y:</label>
+                        <input type="number" id="clientY" min="0" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="packageWeight">Peso (kg):</label>
+                        <input type="number" id="packageWeight" step="0.1" min="0.1" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Prioridade:</label>
+                        <select id="priority" required>
+                            <option value="alta">Alta</option>
+                            <option value="media">Média</option>
+                            <option value="baixa">Baixa</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Adicionar Pedido</button>
+                </form>
+            </div>
+
+            <!-- Controles de Simulação -->
+            <div class="panel-section">
+                <h3>Simulação</h3>
+                <button onclick="deliverySystem.optimizeDeliveries()" class="btn btn-success">
+                    Otimizar Entregas
+                </button>
+                <button onclick="deliverySystem.startSimulation()" class="btn btn-warning">
+                    Iniciar Simulação
+                </button>
+                <button onclick="deliverySystem.resetSystem()" class="btn btn-danger">
+                    Resetar Sistema
+                </button>
+            </div>
+        </section>
+
+        <!-- Mapa de Entregas -->
+        <section class="map-section">
+            <h2>Mapa da Cidade</h2>
+            <div id="cityMap" class="city-map"></div>
+            <div class="map-legend">
+                <div class="legend-item">
+                    <span class="legend-color base"></span>
+                    <span>Base dos Drones</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color order-alta"></span>
+                    <span>Pedido Alta Prioridade</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color order-media"></span>
+                    <span>Pedido Média Prioridade</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color order-baixa"></span>
+                    <span>Pedido Baixa Prioridade</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color drone"></span>
+                    <span>Drone</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status dos Drones -->
+        <section class="drone-status">
+            <h2>Status dos Drones</h2>
+            <div id="droneStatusContainer" class="drone-cards"></div>
+        </section>
+
+        <!-- Lista de Pedidos -->
+        <section class="orders-section">
+            <h2>Pedidos Pendentes</h2>
+            <div id="ordersList" class="orders-list"></div>
+        </section>
+
+        <!-- Relatórios -->
+        <section class="reports-section">
+            <h2>Relatórios</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Pedidos</h3>
+                    <div id="totalOrders" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Entregas Completas</h3>
+                    <div id="completedDeliveries" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Viagens Realizadas</h3>
+                    <div id="totalTrips" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Eficiência</h3>
+                    <div id="efficiency" class="stat-value">0%</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/models/Drone.js"></script>
+    <script src="js/models/Order.js"></script>
+    <script src="js/controllers/DroneController.js"></script>
+    <script src="js/controllers/OrderController.js"></script>
+    <script src="js/controllers/DeliveryController.js"></script>
+    <script src="js/views/MapView.js"></script>
+    <script src="js/views/UIView.js"></script>
+    <script src="js/utils/OptimizationAlgorithm.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
