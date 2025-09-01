@@ -10,7 +10,7 @@
     <header>
         <div class="container">
             <h1>Sistema de Entrega por Drones</h1>
-            <p>Simulador de operação urbana com otimização de rotas</p>
+            <p>Mapa de Rotas</p>
         </div>
     </header>
 
@@ -34,7 +34,7 @@
                     <label for="droneCount">Número de Drones:</label>
                     <input type="number" id="droneCount" value="3" min="1" max="10">
                 </div>
-                <button onclick="droneController.initializeDrones()" class="btn btn-primary">
+                <button id="initializeDrones" class="btn btn-primary">
                     Inicializar Drones
                 </button>
             </div>
@@ -70,15 +70,23 @@
             <!-- Controles de Simulação -->
             <div class="panel-section">
                 <h3>Simulação</h3>
-                <button onclick="deliverySystem.optimizeDeliveries()" class="btn btn-success">
-                    Otimizar Entregas
-                </button>
-                <button onclick="deliverySystem.startSimulation()" class="btn btn-warning">
-                    Iniciar Simulação
-                </button>
-                <button onclick="deliverySystem.resetSystem()" class="btn btn-danger">
-                    Resetar Sistema
-                </button>
+                <div class="control-buttons">
+                    <button id="addSampleOrders" class="btn btn-secondary">
+                        Gerar Pedidos de Exemplo
+                    </button>
+                    <button id="optimizeDeliveries" class="btn btn-success">
+                        Otimizar Entregas
+                    </button>
+                    <button id="startSimulation" class="btn btn-warning">
+                        Iniciar Simulação
+                    </button>
+                    <button id="resetSystem" class="btn btn-danger">
+                        Resetar Sistema
+                    </button>
+                    <button id="runDemo" class="btn btn-info">
+                         Executar Demo Completa
+                    </button>
+                </div>
             </div>
         </section>
 

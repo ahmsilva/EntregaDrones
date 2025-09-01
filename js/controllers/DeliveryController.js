@@ -11,9 +11,7 @@ class DeliveryController {
         this.systemStartTime = null;
     }
 
-    /**
-     * Inicializa o sistema de entrega
-     */
+
     initialize() {
         console.log('Sistema de Entrega de Drones inicializado');
         
@@ -61,7 +59,7 @@ class DeliveryController {
             };
         }
 
-        // Algoritmo de otimização principal
+
         const optimizationResult = this.performAdvancedOptimization(pendingOrders, availableDrones);
 
         // Atualiza interface

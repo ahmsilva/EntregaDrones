@@ -1,272 +1,279 @@
 # Sistema de Entrega por Drones - DTI Digital
 
-Um sistema completo de simulação e otimização de entregas urbanas por drones, desenvolvido como parte do processo seletivo da DTI Digital.
+Um sistema completo de gerenciamento de entregas por drones com interface web interativa e APIs RESTful.
 
-## Objetivo Principal
+## Características
 
-**Alocar pacotes nos drones com o menor número de viagens possível, respeitando as regras de capacidade, distância e prioridade de entrega.**
+- **Interface Web Interativa** - Visualização em tempo real com mapa 2D
+- **APIs RESTful Completas** - Endpoints para todas as operações
+- **Otimização Inteligente** - Algoritmos de roteamento e atribuição
+- **Dashboard de Monitoramento** - Estatísticas e métricas em tempo real
+- **Simulação Realística** - Sistema de bateria, movimentação e entregas
+- **Design Responsivo** - Interface adaptável a diferentes dispositivos
 
-## Funcionalidades Principais
-
-### ✅ Funcionalidades Obrigatórias Implementadas
-
-- **Simulação Completa**: Sistema MVC funcional com drones, pedidos e entregas
-- **Algoritmos de Otimização**: Minimização inteligente do número de viagens
-- **Regras de Negócio**: Capacidade, alcance e prioridade totalmente implementados
-- **Interface Visual**: Mapa interativo 2D com visualização em tempo real
-- **Testes**: Cobertura de funcionalidades principais
-- **README Completo**: Instruções detalhadas de execução
-
-### 🚀 Funcionalidades Avançadas Implementadas
-
-- **Simulação de Bateria**: Drones consomem bateria por distância percorrida
-- **Fila de Prioridade**: Sistema inteligente de ordenação por prioridade + tempo
-- **Cálculo de Tempo**: Estimativa e tracking de tempo real de entrega
-- **Dashboard Interativo**: Relatórios e estatísticas em tempo real
-- **Algoritmos Múltiplos**: Diferentes estratégias de otimização
-- **Feedback Visual**: Animações e indicadores de status
-
-### 🎯 Diferenciais Técnicos
-
-- **Otimização Inteligente**: Combina prioridade, peso, distância e tempo de espera
-- **Simulação com Estados**: Drones transitam entre idle → loading → flying → delivering → returning
-- **API RESTful Simulada**: Estrutura preparada para expansão backend
-- **Algoritmos Avançados**: K-means clustering, nearest neighbor, 2-opt optimization
-- **Tratamento de Erros**: Validações robustas e mensagens claras
-- **Interface Responsiva**: Adaptável a diferentes tamanhos de tela
-
-## Tecnologias Utilizadas
-
-- **Frontend**: HTML5, CSS3, JavaScript ES6+
-- **Arquitetura**: MVC (Model-View-Controller)
-- **Visualização**: Canvas 2D customizado para mapa interativo
-- **Algoritmos**: Otimização heurística e meta-heurística
-
-## Como Executar
+## 🚀 Início Rápido
 
 ### Pré-requisitos
-- Navegador moderno (Chrome, Firefox, Safari, Edge)
-- Servidor web local (opcional, mas recomendado)
+- Node.js 16+ 
+- npm 8+
 
-### Execução Simples
-1. Clone ou baixe o projeto
-2. Abra o arquivo `index.html` em um navegador
-3. O sistema será carregado automaticamente
+### Instalação
 
-### Execução com Servidor Local (Recomendado)
 ```bash
-# Python 3
-python -m http.server 8000
+# Clone o repositório
+git clone <repository-url>
+cd EntregaDrones
 
-# Python 2
-python -m SimpleHTTPServer 8000
+# Instale as dependências
+npm install
 
-# Node.js
-npx serve .
+# Copie as configurações de exemplo
+cp .env.example .env
 
-# Live Server (VSCode)
-# Use a extensão Live Server
+# Execute o servidor
+npm start
 ```
 
-Acesse: `http://localhost:8000`
+### Acesso
 
-## Estrutura do Projeto
+- **Interface Web**: http://localhost:3000
+- **API Documentation**: http://localhost:3000/api
+- **Health Check**: http://localhost:3000/health
+
+## 📋 Funcionalidades
+
+### Interface Web
+- ✅ Visualização de mapa 2D interativo
+- ✅ Criação e gerenciamento de drones
+- ✅ Adição de pedidos com diferentes prioridades
+- ✅ Otimização automática de rotas
+- ✅ Simulação em tempo real das entregas
+- ✅ Dashboard com estatísticas
+- ✅ Sistema de notificações
+
+### APIs REST
+- ✅ **Drones**: CRUD completo + status
+- ✅ **Pedidos**: Criação, listagem, filtros
+- ✅ **Entregas**: Otimização, rotas, simulação
+- ✅ **Sistema**: Configurações, estatísticas, reset
+
+## 🛠️ Tecnologias Utilizadas
+
+### Backend
+- **Node.js** + **Express.js** - Servidor e APIs
+
+
+### Frontend
+- **HTML5** + **CSS3** - Interface moderna
+- **JavaScript ES6+** - Lógica interativa
+- **Canvas API** - Visualização do mapa
+- **Fetch API** - Comunicação com backend
+
+### Arquitetura
+- **MVC Pattern** - Separação de responsabilidades
+- **RESTful APIs** - Padrões REST
+- **Middleware Pattern** - Processamento de requisições
+- **Observer Pattern** - Atualizações em tempo real
+
+## 🧠 Uso de IA no Desenvolvimento
+
+### Prompts Utilizados
+1. **Arquitetura Inicial**:
+   ```
+   "Crie uma arquitetura MVC para sistema de entregas por drone com JavaScript, 
+   priorizando performance e manutenibilidade"
+   ```
+
+2. **Algoritmo de Otimização**:
+   ```
+   "Desenvolva algoritmo para otimizar carregamento de drones 
+   considerando peso, volume e prioridade"
+   ```
+
+3. **Interface de Usuário**:
+   ```
+   "Crie interface moderna e intuitiva para dashboard de monitoramento de drones 
+   com design responsivo e acessível"
+   ```
+
+### Ferramentas de IA Utilizadas
+- **ChatGPT/Claude**: Arquitetura e algoritmos
+- **GitHub Copilot**: Autocompletar código
+- **Tabnine**: Sugestões de código
+## Algoritmos Implementados
+
+### Otimização de Rotas
+- **Nearest Neighbor** - Algoritmo de vizinho mais próximo
+- **Capacity First** - Prioriza capacidade dos drones
+- **Priority Queue** - Fila de prioridades para pedidos
+
+### Estratégias de Atribuição
+- `priority_first` - Prioriza pedidos urgentes
+- `capacity_optimization` - Maximiza uso da capacidade
+- `distance_optimization` - Minimiza distância total
+- `balanced_optimization` - Abordagem equilibrada
+
+## 🏗️ Arquitetura do Sistema
 
 ```
-drone-delivery-system/
-│
-├── index.html              # Página principal
-├── README.md              # Este arquivo
-│
-├── css/
-│   └── style.css          # Estilos visuais
-│
-└── js/
-    ├── models/
-    │   ├── Drone.js       # Modelo do Drone
-    │   └── Order.js       # Modelo do Pedido
-    │
-    ├── controllers/
-    │   ├── DroneController.js    # Controlador de Drones
-    │   ├── OrderController.js    # Controlador de Pedidos
-    │   └── DeliveryController.js # Controlador Principal
-    │
-    ├── views/
-    │   ├── MapView.js       # Visualização do Mapa
-    │   └── UIView.js        # Interface do Usuário
-    │
-    ├── utils/
-    │   └── OptimizationAlgorithm.js # Algoritmos de Otimização
-    │
-    └── main.js              # Arquivo principal
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   Data Layer    │
+│                 │    │                 │    │                 │
+│ - Interface Web │◄──►│ - Express APIs  │◄──►│ - In-Memory     │
+│ - Canvas Map    │    │ - Controllers   │    │ - JSON Storage  │
+│ - Real-time UI  │    │ - Middlewares   │    │ - State Mgmt    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## Como Usar
+### Estrutura de Diretórios
 
-### 1. Configuração Inicial
-- Configure a capacidade dos drones (kg)
-- Defina o alcance máximo (km)
-- Escolha o número de drones
-- Clique em "Inicializar Drones"
+```
+EntregaDrones/
+├── 📄 server.js              # Servidor principal
+├── 📄 package.json           # Dependências
+├── 📄 README.md             # Esta documentação
+├── 📄 README_API.md         # Documentação da API
+├── 📁 src/
+│   ├── 📁 routes/           # Rotas da API
+│   │   ├── 📄 drones.js      # Endpoints de drones
+│   │   ├── 📄 pedidos.js     # Endpoints de pedidos
+│   │   ├── 📄 entregas.js    # Endpoints de entregas
+│   │   └── 📄 system.js      # Endpoints do sistema
+│   └── 📁 middleware/       # Middlewares
+│       ├── 📄 errorHandler.js
+│       └── 📄 validateRequest.js
+├── 📁 js/                   # Frontend JavaScript
+│   ├── 📁 models/          # Modelos de dados
+│   ├── 📁 controllers/     # Controllers
+│   ├── 📁 views/          # Views
+│   └── 📄 main.js         # Inicialização
+├── 📁 css/                 # Estilos
+└── 📄 index.html          # Interface principal
+```
 
-### 2. Adicionando Pedidos
-- Insira as coordenadas (X, Y) do cliente
-- Defina o peso do pacote
-- Selecione a prioridade (alta, média, baixa)
-- Clique em "Adicionar Pedido"
+## 🔧 Comandos Disponíveis
 
-### 3. Otimização e Simulação
-- Clique em "Otimizar Entregas" para atribuir pedidos aos drones
-- Clique em "Iniciar Simulação" para ver os drones em ação
-- Acompanhe o progresso no mapa e nos painéis de status
+```bash
+# Desenvolvimento
+npm start        # Inicia servidor em produção
+npm run dev      # Inicia com nodemon (auto-reload)
 
-### 4. Funcionalidades Extras
-- **Demo Completa**: Botão para demonstração automática
-- **Pedidos de Exemplo**: Gera pedidos para teste rápido
-- **Exportar/Importar**: Salva e carrega configurações
-- **Relatórios**: Estatísticas detalhadas do sistema
+# Utilitários
+npm test         # Executa testes (a implementar)
+npm run lint     # Verifica código (a implementar)
+```
 
-## Algoritmos de Otimização
+## 📡 Exemplos de API
 
-### 1. **Priority First**
-- Prioriza pedidos de alta prioridade
-- Considera tempo de espera
-- Ideal para cenários com muitos pedidos urgentes
+### Fluxo Básico
 
-### 2. **Capacity Optimization**
-- Maximiza uso da capacidade dos drones
-- Minimiza número de viagens
-- Melhor para alto volume de pedidos
+```bash
+# 1. Criar drones
+curl -X POST http://localhost:3000/api/v1/drones/batch \
+  -H "Content-Type: application/json" \
+  -d '{"count": 3, "capacity": 5, "range": 10}'
 
-### 3. **Distance Optimization**
-- Agrupa pedidos por proximidade (K-means)
-- Otimiza rotas usando nearest neighbor
-- Ideal para entregas espalhadas geograficamente
+# 2. Criar pedidos
+curl -X POST http://localhost:3000/api/v1/pedidos \
+  -H "Content-Type: application/json" \
+  -d '{
+    "clientLocation": {"x": 15, "y": 8},
+    "weight": 2.5,
+    "priority": "alta"
+  }'
 
-### 4. **Balanced Optimization**
-- Combina todos os fatores
-- Algoritmo padrão balanceado
-- Melhor performance geral na maioria dos casos
+# 3. Otimizar entregas
+curl -X POST http://localhost:3000/api/v1/entregas/otimizar
 
-## Regras de Negócio Implementadas
+# 4. Iniciar simulação
+curl -X POST http://localhost:3000/api/v1/entregas/simular
+```
 
-### Capacidade
-- Cada drone tem capacidade máxima em kg
-- Sistema verifica peso antes de atribuir pedidos
-- Impede sobrecarga dos drones
+### Monitoramento
 
-### Alcance
-- Drones têm alcance máximo por carga
-- Calcula distância total da rota (origem → entregas → base)
-- Rejeita rotas que excedem o alcance
+```bash
+# Status dos drones
+curl http://localhost:3000/api/v1/drones/status
 
-### Prioridade
-- **Alta**: Processada primeiro, tempo limite 15min
-- **Média**: Processada em seguida, tempo limite 30min
-- **Baixa**: Processada por último, tempo limite 60min
+# Estatísticas do sistema
+curl http://localhost:3000/api/v1/system/stats
 
-### Bateria
-- Simula consumo por distância (5% por km)
-- Drones retornam à base com bateria baixa (<20%)
-- Recarga automática na base
+# Status das entregas
+curl http://localhost:3000/api/v1/entregas/status
+```
 
-## Testes e Validação
 
-### Casos de Teste Implementados
-1. **Teste de Capacidade**: Impede sobrecarga dos drones
-2. **Teste de Alcance**: Rejeita rotas muito longas
-3. **Teste de Prioridade**: Ordena corretamente os pedidos
-4. **Teste de Otimização**: Verifica redução do número de viagens
-5. **Teste de Bateria**: Simula consumo e recarga
+## 🧪 Testes
 
-### Como Testar
-1. Execute a "Demo Completa" para teste automático
-2. Use "Pedidos de Exemplo" para cenários pré-definidos
-3. Adicione pedidos manualmente para testes específicos
-4. Monitore logs do console para debugging
+### Manuais
+- Interface web completamente testada
+- Todos os endpoints da API validados
+- Cenários de erro tratados
 
-## Atalhos de Teclado
+### Automatizados (Planejados)
+- Unit tests com Jest
+- Integration tests
+- API tests com Supertest
+- Load tests
 
-- **Ctrl+O**: Otimizar entregas
-- **Ctrl+S**: Iniciar/Parar simulação
-- **Ctrl+Shift+R**: Resetar sistema
-- **Esc**: Parar simulação
+## 🚀 Deploy
 
-## Métricas e Relatórios
+### Desenvolvimento Local
+```bash
+npm install
+npm start
+```
 
-### Estatísticas Principais
-- Total de pedidos processados
-- Entregas completadas
-- Número total de viagens
-- Eficiência do sistema (%)
-- Tempo médio de entrega
+### Produção
+```bash
+# Definir variáveis de ambiente
+export NODE_ENV=production
+export PORT=3000
 
-### Indicadores de Performance
-- Utilização da capacidade dos drones
-- Distância total percorrida
-- Status da bateria em tempo real
-- Pedidos atrasados por prioridade
+# Executar
+npm start
+```
 
-## Arquitetura Técnica
+### Docker (Planejado)
+```dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+```
 
-### Padrão MVC
-- **Models**: Drone, Order - Lógica de negócio
-- **Views**: MapView, UIView - Interface e visualização
-- **Controllers**: DroneController, OrderController, DeliveryController - Coordenação
+## 🤝 Contribuição
 
-### Algoritmos Utilizados
-- **Otimização Heurística**: Greedy algorithms
-- **Clustering**: K-means para agrupamento geográfico
-- **Roteamento**: Nearest neighbor + 2-opt
-- **Scheduling**: Priority queue com múltiplos critérios
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-## Considerações de Produção
+## 📝 Licença
 
-### Escalabilidade
-- Arquitetura modular permite expansão
-- Algoritmos otimizados para performance
-- Interface responsiva para diferentes dispositivos
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
 
-### Manutenibilidade
-- Código bem documentado
-- Separação clara de responsabilidades
-- Padrões de design consistentes
+## 📧 Contato
 
-### Segurança
-- Validação de inputs
-- Tratamento de erros robusto
-- Prevenção de operações inválidas
-
-## Limitações Conhecidas
-
-1. **Simulação 2D**: Não considera obstáculos 3D reais
-2. **Clima**: Não simula condições meteorológicas
-3. **Tráfego Aéreo**: Não considera regulamentações reais
-4. **Persistência**: Dados não são salvos entre sessões (apenas export/import manual)
-
-## Roadmap Futuro
-
-### Melhorias Técnicas
-- [ ] Integração com APIs reais de mapas
-- [ ] Simulação 3D com obstáculos
-- [ ] Machine Learning para otimização preditiva
-- [ ] Backend real com banco de dados
-
-### Funcionalidades Adicionais
-- [ ] Múltiplas bases de operação
-- [ ] Diferentes tipos de drones
-- [ ] Integração com sistemas de pagamento
-- [ ] Notificações push para clientes
-
-## Contato e Suporte
-
-Este projeto foi desenvolvido como parte do processo seletivo da DTI Digital.
-
-**Tecnologias**: JavaScript, HTML5, CSS3  
-**Paradigma**: Programação Orientada a Objetos  
-**Arquitetura**: MVC  
-**Foco**: Algoritmos de otimização e UX
+- **Desenvolvedor**: André Henrique Martins da Silva
+- **Email**: [andre.henri2004@gmail.com]
+- **LinkedIn**: [https://www.linkedin.com/in/andrehenri-ti]
 
 ---
 
-**DTI Digital - Unlocking digital value. Together.**
+### 🎯 Próximas Funcionalidades
+
+- [ ] WebSockets para updates em tempo real
+- [ ] Persistência em banco de dados
+- [ ] Sistema de autenticação
+- [ ] Interface mobile
+- [ ] Integração com mapas reais
+- [ ] Machine Learning para otimização
+- [ ] Dashboard administrativo
+- [ ] Relatórios exportáveis
+
+**Desenvolvido com ❤️ para DTI Digital**

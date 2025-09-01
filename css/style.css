@@ -192,6 +192,40 @@ main {
     transform: translateY(-1px);
 }
 
+.btn-info {
+    background-color: #0ea5e9;
+    color: var(--white);
+}
+
+.btn-info:hover {
+    background-color: #0284c7;
+    transform: translateY(-1px);
+}
+
+/* Botões de controle */
+.control-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.control-buttons .btn {
+    flex: 1;
+    min-width: 140px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .control-buttons {
+        flex-direction: column;
+    }
+    
+    .control-buttons .btn {
+        width: 100%;
+    }
+}
+
 /* Mapa */
 .map-section {
     grid-area: map;

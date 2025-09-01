@@ -97,6 +97,9 @@ function initializeDeliverySystem() {
  * Configura eventos globais e handlers
  */
 function setupGlobalEvents() {
+    // Configura event listeners dos botões
+    setupEventListeners();
+    
     // Redimensionamento da janela
     window.addEventListener('resize', function() {
         if (mapView) {
@@ -368,8 +371,67 @@ function showSystemHelp() {
 }
 
 /**
- * Função para demonstração completa do sistema
+ * Configura eventos dos botões após carregamento da página
  */
+function setupEventListeners() {
+    // Botão Inicializar Drones
+    const initDronesBtn = document.getElementById('initializeDrones');
+    if (initDronesBtn) {
+        initDronesBtn.addEventListener('click', function() {
+            if (droneController) {
+                droneController.initializeDrones();
+            }
+        });
+    }
+
+    // Botão Gerar Pedidos de Exemplo
+    const sampleOrdersBtn = document.getElementById('addSampleOrders');
+    if (sampleOrdersBtn) {
+        sampleOrdersBtn.addEventListener('click', function() {
+            generateSampleData();
+        });
+    }
+
+    // Botão Otimizar Entregas
+    const optimizeBtn = document.getElementById('optimizeDeliveries');
+    if (optimizeBtn) {
+        optimizeBtn.addEventListener('click', function() {
+            if (deliverySystem) {
+                deliverySystem.optimizeDeliveries();
+            }
+        });
+    }
+
+    // Botão Iniciar Simulação
+    const startSimBtn = document.getElementById('startSimulation');
+    if (startSimBtn) {
+        startSimBtn.addEventListener('click', function() {
+            if (deliverySystem) {
+                deliverySystem.startSimulation();
+            }
+        });
+    }
+
+    // Botão Resetar Sistema
+    const resetBtn = document.getElementById('resetSystem');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            if (deliverySystem) {
+                deliverySystem.resetSystem();
+            }
+        });
+    }
+
+    // Botão Executar Demo Completa
+    const demoBtn = document.getElementById('runDemo');
+    if (demoBtn) {
+        demoBtn.addEventListener('click', function() {
+            runDemo();
+        });
+    }
+
+    console.log('✓ Event listeners configurados');
+}
 function runDemo() {
     if (!droneController || !orderController || !deliverySystem) {
         alert('Sistema não inicializado corretamente');
@@ -457,33 +519,8 @@ function runDemo() {
  * Adiciona botões extras de demonstração
  */
 function addDemoButtons() {
-    const controlPanel = document.querySelector('.control-panel');
-    if (!controlPanel) return;
-    
-    const demoSection = document.createElement('div');
-    demoSection.className = 'panel-section';
-    demoSection.innerHTML = `
-        <h3>Demonstração</h3>
-        <button onclick="runDemo()" class="btn btn-secondary" style="margin-bottom: 10px;">
-            Executar Demo Completa
-        </button>
-        <button onclick="generateSampleData()" class="btn btn-secondary" style="margin-bottom: 10px;">
-            Gerar Pedidos de Exemplo
-        </button>
-        <button onclick="showSystemHelp()" class="btn btn-secondary" style="margin-bottom: 10px;">
-            Ajuda do Sistema
-        </button>
-        <div style="display: flex; gap: 10px;">
-            <button onclick="exportSystemConfiguration()" class="btn btn-secondary" style="flex: 1; font-size: 12px;">
-                Exportar
-            </button>
-            <button onclick="importSystemConfiguration()" class="btn btn-secondary" style="flex: 1; font-size: 12px;">
-                Importar
-            </button>
-        </div>
-    `;
-    
-    controlPanel.appendChild(demoSection);
+    // Botões já estão no HTML, não precisa adicionar mais
+    console.log('✓ Botões de demonstração já disponíveis no HTML');
 }
 
 // Adiciona botões de demo quando a página carrega
