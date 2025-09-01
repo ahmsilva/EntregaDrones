@@ -154,6 +154,7 @@ class OrderController {
         const orderIndex = this.orders.findIndex(order => order.id === orderId);
         
         if (orderIndex === -1) {
+            console.warn(`Pedido ${orderId} não encontrado para marcar como entregue`);
             return false;
         }
 
@@ -164,13 +165,7 @@ class OrderController {
         this.deliveredOrders.push(order);
         this.orders.splice(orderIndex, 1);
 
-        console.log(`Pedido ${orderId} marcado como entregue`);
-
-        // Atualiza interface
-        if (window.uiView) {
-            window.uiView.updateOrdersList();
-            window.uiView.updateStatistics();
-        }
+        console.log(`Pedido ${orderId} marcado como entregue e movido para lista de entregues`);
 
         return true;
     }

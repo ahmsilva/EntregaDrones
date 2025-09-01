@@ -174,14 +174,26 @@ class Drone {
         const nextPoint = this.currentRoute[this.currentRouteIndex + 1];
         
         this.moveToPoint(nextPoint, () => {
-            if (nextPoint.type === 'delivery') {
+            if (nextPoint.type === 'delivery' && nextPoint.order) {
+                console.log(`Drone ${this.id} chegou ao destino do pedido ${nextPoint.order.id}`);
                 this.deliverOrder(nextPoint.order);
+                
+                // Limpa a rota antiga do mapa
+                if (window.mapView) {
+                    window.mapView.clearDroneRoute(this);
+                }
             }
+            
             this.currentRouteIndex++;
             
             // Consome bateria baseada na distância
             const distance = this.calculateDistance(currentPoint, nextPoint);
             this.battery = Math.max(0, this.battery - this.calculateBatteryNeeded(distance));
+            
+            // Atualiza a visualização da posição do drone
+            if (window.mapView) {
+                window.mapView.updateDronePosition(this);
+            }
             
             // Continue para o próximo ponto
             setTimeout(() => this.simulateMovement(), 500);
@@ -235,9 +247,27 @@ class Drone {
         // Remove o pedido da lista de atribuídos
         this.assignedOrders = this.assignedOrders.filter(o => o.id !== order.id);
         
+        console.log(`Drone ${this.id} entregou pedido ${order.id}`);
+        
+        // Notifica o OrderController para mover o pedido para entregues
+        if (window.orderController) {
+            window.orderController.markAsDelivered(order.id);
+        }
+        
+        // Atualiza o mapa para remover o pedido entregue
+        if (window.mapView) {
+            window.mapView.removeElement(`order-${order.id}`);
+        }
+        
         // Simula tempo de entrega
         setTimeout(() => {
             this.status = 'flying';
+            
+            // Atualiza interface
+            if (window.uiView) {
+                window.uiView.updateOrdersList();
+                window.uiView.updateStatistics();
+            }
         }, 500);
     }
 
@@ -252,9 +282,28 @@ class Drone {
         this.currentRoute = [];
         this.currentRouteIndex = 0;
         
+        console.log(`Drone ${this.id} completou todas as entregas e retornou à base`);
+        
+        // Limpa a rota do mapa
+        if (window.mapView) {
+            window.mapView.clearDroneRoute(this);
+        }
+        
         setTimeout(() => {
             this.status = 'idle';
             this.battery = 100; // Recarrega na base
+            
+            console.log(`Drone ${this.id} está ocioso e recarregado`);
+            
+            // Atualiza interface após retorno
+            if (window.uiView) {
+                window.uiView.updateDroneStatus();
+                window.uiView.updateStatistics();
+            }
+            
+            if (window.mapView) {
+                window.mapView.updateDronePosition(this);
+            }
         }, 1000);
     }
 

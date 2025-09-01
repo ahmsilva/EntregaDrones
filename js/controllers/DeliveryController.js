@@ -386,7 +386,13 @@ class DeliveryController {
         // Atualiza interface
         if (window.uiView) {
             window.uiView.updateDroneStatus();
+            window.uiView.updateOrdersList();
             window.uiView.updateStatistics();
+        }
+        
+        // Atualiza mapa para remover pedidos entregues
+        if (window.mapView) {
+            window.mapView.updateMap();
         }
 
         // Conta entregas completadas

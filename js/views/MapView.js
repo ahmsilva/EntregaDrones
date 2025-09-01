@@ -260,11 +260,11 @@ class MapView {
         // Limpa elementos dinâmicos (mantém a base)
         this.clearDynamicElements();
         
-        // Adiciona pedidos
+        // Adiciona apenas pedidos pendentes e atribuídos (não entregues)
         if (window.orderController) {
             const allOrders = window.orderController.getAllOrders();
             allOrders.forEach(order => {
-                if (order.status !== 'delivered') {
+                if (order.status === 'pending' || order.status === 'assigned') {
                     this.addOrderElement(order);
                 }
             });
